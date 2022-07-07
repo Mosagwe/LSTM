@@ -6,10 +6,10 @@ Created on Thu Jul  7 08:29:43 2022
 """
 
 import pandas as pd
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
+from keras.preprocessing.text import Tokenizer
+from keras_preprocessing.sequence import pad_sequences
+from keras.models import Sequential
+from keras.layers import Dense, Embedding, LSTM, SpatialDropout1D
 from sklearn.model_selection import train_test_split
 import re
 

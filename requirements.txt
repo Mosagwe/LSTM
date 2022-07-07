@@ -2,6 +2,7 @@ sklearn
 fastapi
 pandas
 pydantic
+keras
 uvicorn
 h5py
 python-multipart

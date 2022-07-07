@@ -8,10 +8,11 @@ import numpy as np
 from fastapi import FastAPI, Form
 import pandas as pd
 from starlette.responses import HTMLResponse
-from tensorflow.keras.preprocessing.text import Tokenizer
-from tensorflow.keras.preprocessing.sequence import pad_sequences
-import tensorflow as tf
+from keras.preprocessing.text import Tokenizer
+from keras_preprocessing.sequence import pad_sequences
+from keras.models import load_model
 import re
+
 
 
 app = FastAPI()
@@ -42,7 +43,7 @@ def my_pipeline(text):
 @app.post('/predict')
 def predict(text:str = Form(...)):
     clean_text = my_pipeline(text) #clean, and preprocess the text through pipeline
-    loaded_model = tf.keras.models.load_model('sentiment.h5') #load the saved model 
+    loaded_model = load_model('sentiment.h5') #load the saved model 
     predictions = loaded_model.predict(clean_text) #predict the text
     sentiment = int(np.argmax(predictions)) #calculate the index of max sentiment
     probability = max(predictions.tolist()[0]) #calulate the probability
